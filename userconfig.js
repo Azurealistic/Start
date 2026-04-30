@@ -9,26 +9,26 @@ const default_config = {
   tabs: [
     {
       name: "home",
-      background_url: `src/img/banners/cbg-8.gif`,
+      background_url: `src/img/banners/cbg-10.gif`,
       categories: [
         {
           name: "",
           links: [
             {
-              name: "gmail",
-              url: "https://mail.google.com",
-              icon: "brand-gmail",
+              name: "outlook",
+              url: "https://outlook.live.com/mail/",
+              icon: "brand-windows",
               icon_color: palette.blue,
             },
             {
-              name: "classroom",
-              url: "https://classroom.google.com/u/1/",
-              icon: "books",
+              name: "search",
+              url: "https://kagi.com/",
+              icon: "search",
               icon_color: palette.green,
             },
             {
-              name: "docs",
-              url: "https://docs.google.com/document/u/0/",
+              name: "fanfiction",
+              url: "https://archiveofourown.org/",
               icon: "file-text",
               icon_color: palette.blue,
             },
@@ -62,18 +62,18 @@ const default_config = {
           links: [
             {
               name: "github",
-              url: "https://github.com/ashish0kumar",
+              url: "https://github.com/azurealistic",
               icon: "brand-github",
               icon_color: palette.green,
             },
             {
-              name: "devdocs",
-              url: "https://devdocs.io",
-              icon: "code",
+              name: "keybr",
+              url: "https://www.keybr.com/",
+              icon: "keyboard",
               icon_color: palette.blue,
             },
             {
-              name: "hacker-news",
+              name: "hn",
               url: "https://news.ycombinator.com",
               icon: "news",
               icon_color: palette.peach,
@@ -84,21 +84,21 @@ const default_config = {
           name: "",
           links: [
             {
-              name: "leetcode",
-              url: "https://leetcode.com/u/ashish0kumar/",
-              icon: "brand-leetcode",
+              name: "crunchyroll",
+              url: "https://www.crunchyroll.com/",
+              icon: "spiral",
               icon_color: palette.yellow,
             },
             {
-              name: "dsa",
-              url: "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2",
-              icon: "binary-tree",
+              name: "discord",
+              url: "https://discord.com/channels/@me",
+              icon: "music",
               icon_color: palette.red,
             },
             {
-              name: "monkeytype",
-              url: "https://monkeytype.com/",
-              icon: "keyboard",
+              name: "hackforums",
+              url: "https://hackforums.net/",
+              icon: "terminal",
               icon_color: palette.yellow,
             },
           ],
@@ -135,4 +135,4 @@ const CONFIG = new Config(default_config, palette);
 
 const root = document.querySelector(":root");
 root.style.setProperty("--bg", palette.mantle);
-root.style.setProperty("--accent", palette.green);
+root.style.setProperty("--accent", palette.teal);
