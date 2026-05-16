@@ -233,18 +233,6 @@ const default_configuration = {
               icon_color: palette.green,
             },
             {
-              name: "stackoverflow",
-              url: "https://stackoverflow.com",
-              icon: "brand-stackoverflow",
-              icon_color: palette.peach,
-            },
-            {
-              name: "mdn",
-              url: "https://developer.mozilla.org",
-              icon: "brand-firefox",
-              icon_color: palette.red,
-            },
-            {
               name: "devdocs",
               url: "https://devdocs.io",
               icon: "book-2",
@@ -288,60 +276,43 @@ const default_configuration = {
           ],
         },
         {
-          name: "challenges",
+          name: "blogs",
           links: [
             {
-              name: "leetcode",
-              url: "https://leetcode.com",
-              icon: "brand-leetcode",
-              icon_color: palette.green,
-            },
-            {
-              name: "exercism",
-              url: "https://exercism.org",
-              icon: "code-minus",
-              icon_color: palette.peach,
-            },
-            {
-              name: "aoc",
-              url: "https://adventofcode.com",
-              icon: "brand-linktree",
-              icon_color: palette.red,
-            },
-            {
-              name: "kaggle",
-              url: "https://www.kaggle.com",
-              icon: "brain",
-              icon_color: palette.blue,
-            },
-          ],
-        },
-        {
-          name: "resources",
-          links: [
-            {
-              name: "dev.to",
-              url: "https://dev.to",
-              icon: "code",
-              icon_color: palette.green,
-            },
-            {
-              name: "xe's blog",
+              name: "xe",
               url: "https://xeiaso.net",
               icon: "terminal-2",
               icon_color: palette.peach,
             },
             {
-              name: "uber engineering",
-              url: "https://www.uber.com/en-GB/blog/london/engineering",
-              icon: "brand-uber",
+              name: "jvns",
+              url: "https://jvns.ca",
+              icon: "pencil",
+              icon_color: palette.green,
+            },
+            {
+              name: "lm",
+              url: "https://lemire.me/blog",
+              icon: "binary",
               icon_color: palette.red,
             },
             {
-              name: "netflix tech blog",
-              url: "https://netflixtechblog.com",
-              icon: "brand-netflix",
+              name: "eli",
+              url: "https://eli.thegreenplace.net",
+              icon: "feather",
               icon_color: palette.blue,
+            },
+            {
+              name: "rchl",
+              url: "https://rachelbythebay.com/w/",
+              icon: "terminal",
+              icon_color: palette.mauve,
+            },
+            {
+              name: "mzz",
+              url: "https://mazzo.li/archive.html",
+              icon: "binary-tree",
+              icon_color: palette.teal,
             },
           ],
         },
@@ -354,4 +325,4 @@ const CONFIG = new Config(default_configuration, palette);
 
 const root = document.querySelector(":root");
 root.style.setProperty("--bg", palette.mantle);
-root.style.setProperty("--accent", palette.blue);
+root.style.setProperty("--accent", palette.teal);

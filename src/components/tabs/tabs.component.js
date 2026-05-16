@@ -69,15 +69,6 @@ class Category extends Component {
   }
 
   /**
-   * Generates background style attribute for category
-   * @param {string} url - Background image URL
-   * @returns {string} CSS style attribute string
-   */
-  static getBackgroundStyle(url) {
-    return `style="background-image: url(${url}); background-repeat: no-repeat; background-size: contain;"`;
-  }
-
-  /**
    * Generates HTML for all tab categories
    * @param {Array} tabs - Array of tab objects
    * @returns {string} HTML string containing all categories
@@ -86,8 +77,8 @@ class Category extends Component {
     return `
       ${tabs
         .map(({ name, background_url }, index) => {
-          return `<ul class="${name}" ${Category.getBackgroundStyle(background_url)} ${index == 0 ? "active" : ""}>
-            <div class="banner"></div>
+          return `<ul class="${name}" ${index == 0 ? "active" : ""}>
+            <div class="banner" style="background-image: url(${background_url});"></div>
             <div class="links">${Links.getAll(name, tabs)}</div>
           </ul>`;
         })
@@ -181,6 +172,17 @@ class Tabs extends Component {
           # animation: scroll 25s ease-in-out infinite;
       }
 
+      .categories ul .banner {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 30%;
+          height: 100%;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+      }
+
       @keyframes scroll {
           50% {
               background-position-x: -240px;
@@ -266,7 +268,8 @@ class Tabs extends Component {
           margin: auto;
           border-radius: 5px;
           box-shadow: inset 0 0 0 2px var(--flavour);
-          left: calc(15% - 42.5px);
+          left: 15%;
+          transform: translateX(-50%);
           bottom: 0;
           top: 0;
           background: linear-gradient(to top, rgb(50 48 47 / 90%), transparent);
@@ -277,6 +280,7 @@ class Tabs extends Component {
           flex-wrap: wrap;
           word-break: break-all;
           align-items: center;
+          align-content: center;
           backdrop-filter: blur(3px);
       }
 
