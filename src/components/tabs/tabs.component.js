@@ -1,8 +1,18 @@
+
+// Component for rendering navigation links within tabs
 class Links extends Component {
+  /**
+   * Initialise the Links component
+   */
   constructor() {
     super();
   }
 
+  /**
+   * Generates icon HTML for a link
+   * @param {Object} link - Link object containing icon properties
+   * @returns {string} HTML string for the icon or empty string
+   */
   static getIcon(link) {
     const defaultColor = CONFIG.palette.base;
 
@@ -12,6 +22,12 @@ class Links extends Component {
       : "";
   }
 
+  /**
+   * Generates HTML for all links in a specific tab
+   * @param {string} tabName - Name of the tab to render links for
+   * @param {Array} tabs - Array of tab objects
+   * @returns {string} HTML string containing all links
+   */
   static getAll(tabName, tabs) {
     const { categories } = tabs.find((f) => f.name === tabName);
 
@@ -23,16 +39,16 @@ class Links extends Component {
             <h1>${name}</h1>
               <div class="links-wrapper">
               ${links
-                .map(
-                  (link) => `
+              .map(
+                (link) => `
                   <div class="link-info">
                     <a href="${link.url}" target="_blank">
                       ${Links.getIcon(link)}
                       ${link.name ? `<p class="link-name">${link.name}</p>` : ""}
                     </a>
                 </div>`,
-                )
-                .join("")}
+              )
+              .join("")}
             </div>
           </li>`;
         })
@@ -41,15 +57,31 @@ class Links extends Component {
   }
 }
 
+/**
+ * Component for rendering tab categories with background styling
+ */
 class Category extends Component {
+  /**
+   * Initialise the Category component
+   */
   constructor() {
     super();
   }
 
+  /**
+   * Generates background style attribute for category
+   * @param {string} url - Background image URL
+   * @returns {string} CSS style attribute string
+   */
   static getBackgroundStyle(url) {
-    return `style="background-image: url(${url}); background-repeat: no-repeat;background-size: contain;"`;
+    return `style="background-image: url(${url}); background-repeat: no-repeat; background-size: contain;"`;
   }
 
+  /**
+   * Generates HTML for all tab categories
+   * @param {Array} tabs - Array of tab objects
+   * @returns {string} HTML string containing all categories
+   */
   static getAll(tabs) {
     return `
       ${tabs
@@ -64,26 +96,49 @@ class Category extends Component {
   }
 }
 
+/**
+ * Main tabs component for displaying categorised links and navigation
+ */
 class Tabs extends Component {
+  // CSS selector references for DOM elements
   refs = {};
 
+  /**
+   * Initialise the tabs component with configuration
+   */
   constructor() {
     super();
     this.tabs = CONFIG.tabs;
   }
 
+  /**
+   * Returns CSS import dependencies for this component
+   * @returns {string[]} Array of CSS file paths
+   */
   imports() {
     return [
-      this.resources.icons.material,
+      this.getIconResource('material'),
       this.resources.icons.tabler,
-      this.resources.fonts.roboto,
-      this.resources.fonts.raleway,
-      this.resources.libs.awoo,
+      this.getFontResource('roboto'),
+      this.getFontResource('raleway'),
+      this.getLibraryResource('awoo'),
     ];
   }
 
+  /**
+   * Generates component CSS styles
+   * @returns {string} CSS styles for the tabs component
+   */
   style() {
     return `
+      status-bar {
+          bottom: -70px;
+          height: 32px;
+          background: ${CONFIG.palette.base};
+          border-radius: 4px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, .25);
+      }
+
       #panels, #panels ul,
       #panels .links {
           position: absolute;
@@ -94,7 +149,7 @@ class Tabs extends Component {
       }
 
       #panels {
-          border-radius: 15px;
+          border-radius: 5px 0 0 5px;
           width: 90%;
           max-width: 1200px;
           height: 450px;
@@ -112,7 +167,7 @@ class Tabs extends Component {
           height: 100%;
           overflow: hidden;
           position: relative;
-          border-radius: 15px;
+          border-radius: 10px 0 0 10px;
       }
 
       .categories ul {
@@ -133,7 +188,7 @@ class Tabs extends Component {
       }
 
       .categories ul:nth-child(1) {
-          --flavour: ${CONFIG.palette.sapphire};
+          --flavour: ${CONFIG.palette.green};
       }
 
       .categories ul:nth-child(2) {
@@ -165,7 +220,7 @@ class Tabs extends Component {
           width: 70%;
           height: 100%;
           background: ${CONFIG.palette.base};
-          padding: 4% 6%;
+          padding: 5%;
           flex-wrap: wrap;
       }
 
@@ -180,10 +235,10 @@ class Tabs extends Component {
           transition: all .2s;
           display: inline-flex;
           align-items: center;
-          padding: .4em .8em;
+          padding: .4em .7em;
           background: ${CONFIG.palette.mantle};
-          box-shadow: 0 4px ${CONFIG.palette.mantle}, 0 5px 5px rgb(0 0 0 / 20%);
-          border-radius: 15px;
+          box-shadow: 0 4px ${CONFIG.palette.mantle}, 0 5px 10px rgb(0 0 0 / 20%);
+          border-radius: 2px;
           margin-bottom: .7em;
       }
 
@@ -191,7 +246,7 @@ class Tabs extends Component {
           display: inline-flex;
       }
 
-      .categories .link-info:not(:last-child) { margin-right: 1em; }
+      .categories .link-info:not(:last-child) { margin-right: .5em; }
 
       .categories ul .links a:hover {
           transform: translate(0, 4px);
@@ -209,7 +264,7 @@ class Tabs extends Component {
           height: 250px;
           padding: 1em;
           margin: auto;
-          border-radius: 15px;
+          border-radius: 5px;
           box-shadow: inset 0 0 0 2px var(--flavour);
           left: calc(15% - 42.5px);
           bottom: 0;
@@ -225,9 +280,15 @@ class Tabs extends Component {
           backdrop-filter: blur(3px);
       }
 
+      .categories .links li:not(:last-child) {
+          box-shadow: 0 1px 0 ${CONFIG.palette.text};
+          padding: 0 0 .5em 0;
+          margin-bottom: 1.5em;
+      }
+
       .categories .links li h1 {
           color: ${CONFIG.palette.text};
-          opacity: 0.5;
+        opacity: 0.5;
           font-size: 13px;
           margin-bottom: 1em;
           font-weight: 600;
@@ -269,6 +330,10 @@ class Tabs extends Component {
     `;
   }
 
+  /**
+   * Generates HTML template for the tabs component
+   * @returns {string} HTML template with panels and categories
+   */
   template() {
     return `
       <div id="links" class="-">
@@ -276,12 +341,17 @@ class Tabs extends Component {
         <div id="panels">
           <div class="categories">
             ${Category.getAll(this.tabs)}
+            <search-bar></search-bar>
           </div>
+          <status-bar class="!-"></status-bar>
         </div>
       </div>
     `;
   }
 
+  /**
+   * Component lifecycle callback when element is connected to DOM
+   */
   connectedCallback() {
     this.render();
   }
