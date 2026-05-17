@@ -36,7 +36,7 @@ const default_configuration = {
   disabled: [],
   localIcons: true,
   localFonts: true,
-  fastlink: "https://kagi.com",
+  fastlink: "https://musicforprogramming.net/latest/",
   openLastVisitedTab: true,
   tabs: [
     {
