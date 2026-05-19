@@ -316,20 +316,8 @@ class Tabs extends Component {
       }
 
       .ti {
-          animation: fadeInAnimation ease .5s;
-          animation-iteration-count: 1;
-          animation-fill-mode: forwards;
           height: 27px;
           width: 27px;
-      }
-
-      @keyframes fadeInAnimation {
-          0% {
-              opacity: 0;
-          }
-          100% {
-              opacity: 1;
-          }
       }
     `;
   }

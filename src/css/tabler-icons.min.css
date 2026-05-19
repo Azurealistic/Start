@@ -6,7 +6,10 @@
   font-family: "tabler-icons";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/tabler-icons.ttf?v2.33.0") format("truetype");
+  font-display: swap;
+  src: url("../fonts/tabler-icons.woff2?v2.33.0") format("woff2"),
+       url("../fonts/tabler-icons.woff?v2.33.0") format("woff"),
+       url("../fonts/tabler-icons.ttf?v2.33.0") format("truetype");
 }
 
 .ti {
