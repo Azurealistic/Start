@@ -1,9 +1,9 @@
 // User configuration for the startpage - update the palette, location, and your preferred tabs, categories, and links
 
 // Define preferred palette for light and dark mode
-// Available themes: latte, frappe, mocha, macchiato
+// Available themes: latte, frappe, mocha, macchiato, moonfly
 const preferredLightTheme = latte;
-const preferredDarkTheme = mocha;
+const preferredDarkTheme = moonfly;
 
 let palette = initThemeSystem(preferredLightTheme, preferredDarkTheme);
 
